@@ -1,4 +1,9 @@
-
+'''
+Author: Akash Yadav 
+        1710003
+        Integrated M.Sc Physics 
+        National Institute of Technology, Patna 
+'''
 import random as rnd
 import matplotlib.pyplot as plt
 import math

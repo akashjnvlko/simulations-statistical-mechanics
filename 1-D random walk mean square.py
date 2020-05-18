@@ -11,38 +11,36 @@ import numpy as np
 
 Num_of_steps = 100
 #this function will give us random walks performed, upon calling
-def walker(steps) :
-
+def walker_modified(steps) :
+    '''this is modified walker function and it returns squared position '''
     initial_pos = 0
     x= initial_pos
     step_size = 1
     
-    x_data=[]
+    x_avg_data=[]
     step_data = []
     for i in range(0,steps):
-        x = x + (step_size*rnd.choice([1,-1]))
-        x_data.append(x)
+        x = x + (step_size*rnd.choice([1,-1]))**2
+        x_avg_data.append(x)
         step_data.append(i+1)
-    return x_data,step_data
+    return x_avg_data,step_data
 
 
 # for more than one walker (... say m walkers)
-m = 20
-avg = np.zeros(Num_of_steps)
+m = 5
 sq_avg = np.zeros(Num_of_steps)
 for i in range(0,m):
-     Y,X = walker(Num_of_steps)
-     avg = avg + Y
-     plt.plot(X,Y) 
+    Y,X = walker_modified(Num_of_steps)
+    sq_avg = sq_avg + Y
+    plt.scatter(X,Y) 
 
-avg = avg/m
-plt.plot(X,avg)   
+sq_avg = sq_avg/m
+plt.plot(X,sq_avg)   
     #  plt.scatter(X,Y)
 plt.title("Random walk problem in 1-D")
 plt.xlabel("number of steps")
 plt.ylabel("distance from origin")
-plt.show()
- 
+plt.show() 
 
 
 
